@@ -27,6 +27,28 @@ export function maestroReducer(state = estadoInicial, action: MaestroActions.Act
                     }
                 }
             });
+        case MaestroActions.ACTIVAR:
+            return state.map( editMaestro => {
+                if(editMaestro.codigo === action.codigo){
+                    return {
+                        ...editMaestro,
+                        estado: true
+                    }
+                }else{
+                    return editMaestro;
+                }
+            });
+        case MaestroActions.DESACTIVAR:
+            return state.map( editMaestro => {
+                if(editMaestro.codigo === action.codigo){
+                    return {
+                        ...editMaestro,
+                        estado: false
+                    }
+                }else{
+                    return editMaestro;
+                }
+            });
         default:
             return state;
     }

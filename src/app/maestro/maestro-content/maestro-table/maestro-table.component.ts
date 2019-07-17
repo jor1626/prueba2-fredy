@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MaestroClass } from '../../model/maestro.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducers';
-import { EditarMaestroAction } from '../../maestro.actions';
+import { EditarMaestroAction, ActivarMaestroAction, DesactivarMaestroAction } from '../../maestro.actions';
 
 @Component({
   selector: 'app-maestro-table',
@@ -30,12 +30,24 @@ export class MaestroTableComponent implements OnInit {
     this.accion_form = 1;
   }
 
-  editar(data: number){
+  editar(data: any){
     const action = new EditarMaestroAction(data);
 
     this.store.dispatch(action);
 
     this.mostrarFiltro.emit(1);
+  }
+
+  activar(data: number){
+    const action = new ActivarMaestroAction(data);
+
+    this.store.dispatch(action);
+  }
+
+  desactivar(data: number){
+    const action = new DesactivarMaestroAction(data);
+
+    this.store.dispatch(action);
   }
 
 }

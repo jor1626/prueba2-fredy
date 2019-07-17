@@ -3,6 +3,8 @@ import { Action } from '@ngrx/store';
 export const LISTAR = '[maestro] Listar';
 export const CREAR  = '[maestro] Crear';
 export const EDITAR = '[maestro] Editar';
+export const ACTIVAR = '[maestro] Activar';
+export const DESACTIVAR = '[maestro] Desactivar';
 
 export class ListarMaestroAction implements Action {
     readonly type = LISTAR;
@@ -18,4 +20,14 @@ export class EditarMaestroAction implements Action {
     constructor(public codigo: number){}
 }
 
-export type Actions = ListarMaestroAction | CrearMaestroAction | EditarMaestroAction;
+export class ActivarMaestroAction implements Action {
+    readonly type = ACTIVAR;
+    constructor(public codigo: number){}
+}
+
+export class DesactivarMaestroAction implements Action {
+    readonly type = DESACTIVAR;
+    constructor(public codigo: number){}
+}
+
+export type Actions = ListarMaestroAction | CrearMaestroAction | EditarMaestroAction | ActivarMaestroAction | DesactivarMaestroAction;
