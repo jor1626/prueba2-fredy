@@ -1,0 +1,14 @@
+
+
+<div class="container">
+  <div *ngIf="visibility == 1"> 
+    <app-maestro-filter (mostrarContenido)="visibilityPanel($event)"></app-maestro-filter>
+  </div>
+
+  <div *ngIf="visibility == 2"> 
+    <app-maestro-table (mostrarFiltro)="visibilityPanel($event)"></app-maestro-table>
+  </div>
+</div>
+
+
+
