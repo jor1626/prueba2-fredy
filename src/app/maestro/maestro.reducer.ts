@@ -13,15 +13,20 @@ export function maestroReducer(state = estadoInicial, action: MaestroActions.Act
         case MaestroActions.CREAR:
             const maestro = new MaestroClass(action.nombre)
             return [ ...state, maestro];
-        // case MaestroActions.EDITAR:
-        //     return state.map( editMaestro => {
-        //         if(editMaestro.codigo === action.codigo){
-        //             return {
-        //                 ...editMaestro,
-
-        //             }
-        //         }
-        //     });
+        case MaestroActions.EDITAR:
+            return state.map( editMaestro => {
+                if(editMaestro.codigo === action.codigo){
+                    return {
+                        ...editMaestro,
+                        selected: true
+                    }
+                }else{
+                    return {
+                        ...editMaestro,
+                        selected: false
+                    }
+                }
+            });
         default:
             return state;
     }

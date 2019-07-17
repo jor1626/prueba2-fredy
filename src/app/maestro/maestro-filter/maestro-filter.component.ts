@@ -21,12 +21,21 @@ export class MaestroFilterComponent implements OnInit {
   @Output() mostrarContenido = new EventEmitter<number>();
 
   constructor(private store: Store<AppState>){
-    this.store.subscribe(state => {
-      this.options = state.maestro
-    })
+    
   }
 
   ngOnInit() {
+
+    this.store.subscribe(state => {
+      this.options = state.maestro
+      const selected = state.maestro.find(function(element) {
+        if(element.selected === true){
+          return element;
+        };
+        return '';
+      });
+      this.filtrarMaestros.setValue(selected.nombre);
+    });
     
     this.filteredOptions = this.filtrarMaestros.valueChanges
       .pipe(

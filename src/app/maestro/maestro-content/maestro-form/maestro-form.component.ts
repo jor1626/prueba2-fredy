@@ -43,8 +43,8 @@ export class MaestroFormComponent implements OnInit {
 
       this.store.dispatch(action);
 
-      this.smartModalService.getModal('maestro_form_modal').open();
-      
+      this.smartModalService.getModal('maestro_form_modal').close();
+
       this.accion_form = 0;
     } 
   }
